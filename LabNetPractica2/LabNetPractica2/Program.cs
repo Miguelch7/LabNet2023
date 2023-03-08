@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace LabNetPractica2
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
+            string dividendoString, divisorString;
+
             Console.WriteLine("========== Punto 1) ==========");
 
             try
@@ -32,9 +34,15 @@ namespace LabNetPractica2
 
             Console.WriteLine("\n========== Punto 2) ==========");
 
+            Console.Write("Ingrese el dividendo: ");
+            dividendoString = Console.ReadLine();
+
+            Console.Write("Ingrese el divisor: ");
+            divisorString = Console.ReadLine();
+
             try
             {
-                Console.WriteLine($"El resultado de la división es: { Dividir() }");
+                Console.WriteLine($"El resultado de la división es: { Dividir(dividendoString, divisorString) }");
             }
             catch (Exception ex)
             {
@@ -75,7 +83,7 @@ namespace LabNetPractica2
             Console.ReadKey();
         }
 
-        static int DividirPorCero()
+        public static int DividirPorCero()
         {
             Console.Write("Ingrese un valor: ");
             string valor = Console.ReadLine();
@@ -91,16 +99,9 @@ namespace LabNetPractica2
             return valorNum / 0;
         }
 
-        static int Dividir()
+        public static int Dividir(string dividendoString, string divisorString)
         {
-            string dividendoString, divisorString;
             int dividendo, divisor;
-
-            Console.Write("Ingrese el dividendo: ");
-            dividendoString = Console.ReadLine();
-
-            Console.Write("Ingrese el divisor: ");
-            divisorString = Console.ReadLine();
 
             if (!Int32.TryParse(dividendoString, out dividendo) || !Int32.TryParse(divisorString, out divisor))
             {
