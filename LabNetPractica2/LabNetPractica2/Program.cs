@@ -34,11 +34,26 @@ namespace LabNetPractica2
 
             try
             {
-                Dividir();
+                Console.WriteLine($"El resultado de la división es: { Dividir() }");
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+
+            Console.WriteLine("\nPresione una tecla para continuar al siguiente punto.");
+            Console.ReadKey();
+
+            Console.WriteLine("\n===== Punto 3) =====");
+
+            try
+            {
+                Logic.Method();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine($"El tipo de excepción es: {ex.GetType()}");
             }
 
             Console.WriteLine("\nPresione una tecla para continuar al siguiente punto.");
