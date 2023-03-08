@@ -13,5 +13,10 @@ namespace LabNetPractica2
         {
             throw new AmbiguousMatchException();
         }
+
+        public static void CustomMethod()
+        {
+            throw new MyCustomException("Mensaje genérico de mi excepción personalizada.");
+        }
     }
 }

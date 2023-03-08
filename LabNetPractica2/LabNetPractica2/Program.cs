@@ -58,6 +58,21 @@ namespace LabNetPractica2
 
             Console.WriteLine("\nPresione una tecla para continuar al siguiente punto.");
             Console.ReadKey();
+
+            Console.WriteLine("\n===== Punto 3) =====");
+
+            try
+            {
+                Logic.CustomMethod();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine($"El tipo de excepción es: {ex.GetType()}");
+            }
+
+            Console.Write("\nFin del programa. Presione una tecla para salir...");
+            Console.ReadKey();
         }
 
         static int DividirPorCero()
