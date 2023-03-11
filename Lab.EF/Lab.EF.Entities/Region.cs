@@ -1,4 +1,4 @@
-namespace Lab.EF.Data
+namespace Lab.EF.Entities
 {
     using System;
     using System.Collections.Generic;
@@ -6,22 +6,23 @@ namespace Lab.EF.Data
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class CustomerDemographics
+    [Table("Region")]
+    public partial class Region
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CustomerDemographics()
+        public Region()
         {
-            Customers = new HashSet<Customers>();
+            Territories = new HashSet<Territories>();
         }
 
-        [Key]
-        [StringLength(10)]
-        public string CustomerTypeID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int RegionID { get; set; }
 
-        [Column(TypeName = "ntext")]
-        public string CustomerDesc { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string RegionDescription { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Customers> Customers { get; set; }
+        public virtual ICollection<Territories> Territories { get; set; }
     }
 }
