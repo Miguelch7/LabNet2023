@@ -7,7 +7,7 @@ using Lab.EF.Entities;
 
 namespace Lab.EF.Logic
 {
-    public class SuppliersLogic : BaseLogic
+    public class SuppliersLogic : BaseLogic, IBaseLogic<Suppliers>
     {
         public List<Suppliers> GetAll()
         {

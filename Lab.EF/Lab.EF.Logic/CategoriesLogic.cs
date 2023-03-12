@@ -7,7 +7,7 @@ using Lab.EF.Entities;
 
 namespace Lab.EF.Logic
 {
-    public class CategoriesLogic : BaseLogic
+    public class CategoriesLogic : BaseLogic, IBaseLogic<Categories>
     {
         public List<Categories> GetAll()
         {
