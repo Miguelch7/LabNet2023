@@ -1,22 +1,14 @@
-﻿using Lab.EF.Data;
-using Lab.EF.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Lab.EF.Entities;
 
 namespace Lab.EF.Logic
 {
-    public class SuppliersLogic
+    public class SuppliersLogic : BaseLogic
     {
-        protected readonly NorthwindContext _context;
-
-        public SuppliersLogic()
-        {
-            _context = new NorthwindContext();
-        }
-
         public List<Suppliers> GetAll()
         {
             return _context.Suppliers.ToList();
