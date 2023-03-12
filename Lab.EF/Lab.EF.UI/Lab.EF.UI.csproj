@@ -57,5 +57,15 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lab.EF.Entities\Lab.EF.Entities.csproj">
+      <Project>{9EC4710E-F350-4968-8948-37961CE39B16}</Project>
+      <Name>Lab.EF.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lab.EF.Logic\Lab.EF.Logic.csproj">
+      <Project>{B33D9FF4-194E-4848-9CD0-D5B58AB457C4}</Project>
+      <Name>Lab.EF.Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
