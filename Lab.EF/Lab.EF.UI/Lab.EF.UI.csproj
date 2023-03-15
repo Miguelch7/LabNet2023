@@ -50,8 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IMenu.cs" />
+    <Compile Include="IABMMenu.cs" />
     <Compile Include="Menu.cs" />
+    <Compile Include="MenuPrincipal.cs" />
     <Compile Include="MenuCategoria.cs" />
     <Compile Include="MenuProveedor.cs" />
     <Compile Include="Program.cs" />

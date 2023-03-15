@@ -14,9 +14,9 @@ namespace Lab.EF.UI
         static void Main(string[] args)
         {
 
-            Menu menu = new Menu();
+            MenuPrincipal menuPrincipal = new MenuPrincipal();
 
-            menu.Iniciar();
+            menuPrincipal.Iniciar();
         }
     }
 }

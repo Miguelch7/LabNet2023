@@ -8,28 +8,17 @@ using System.Threading.Tasks;
 
 namespace Lab.EF.UI
 {
-    public class MenuProveedor
+    public class MenuProveedor : Menu, IABMMenu
     {
         private readonly SuppliersLogic _suppliersLogic;
-        private int opcionSeleccionada;
-        private const int opcionSalir = 6;
 
         public MenuProveedor()
         {
             _suppliersLogic = new SuppliersLogic();
+            opcionSalir = 6;
         }
 
-        public void Iniciar()
-        {
-            while (opcionSeleccionada != opcionSalir)
-            {
-                MostrarMenu();
-                opcionSeleccionada = SolicitarOpcion();
-                EjecutarAccion(opcionSeleccionada);
-            }
-        }
-
-        private void MostrarMenu()
+        protected override void MostrarMenu()
         {
             Console.WriteLine("---------- Menú de opciones Proveedor ----------");
             Console.WriteLine("1) Listar todos los proveedores");
@@ -40,7 +29,7 @@ namespace Lab.EF.UI
             Console.WriteLine("6) Volver al menú principal");
         }
 
-        private int SolicitarOpcion()
+        protected override int SolicitarOpcion()
         {
             Console.Write("Elija una opción: ");
             int option = 0;
@@ -59,24 +48,24 @@ namespace Lab.EF.UI
             return option;
         }
 
-        private void EjecutarAccion(int option)
+        protected override void EjecutarAccion(int option)
         {
             switch (option)
             {
                 case 1:
-                    ListarProveedores();
+                    MostrarTodos();
                     break;
                 case 2:
-                    MostrarProveedorPorId();
+                    MostrarPorId();
                     break;
                 case 3:
-                    InsertarProveedor();
+                    Insertar();
                     break;
                 case 4:
-                    ActualizarProveedor();
+                    Actualizar();
                     break;
                 case 5:
-                    EliminarProveedor();
+                    Eliminar();
                     break;
                 case 6:
                     Salir();
@@ -87,7 +76,7 @@ namespace Lab.EF.UI
             }
         }
 
-        protected void ListarProveedores()
+        public void MostrarTodos()
         {
             List<Suppliers> listadoProveedores = _suppliersLogic.GetAll();
 
@@ -102,7 +91,7 @@ namespace Lab.EF.UI
             Console.WriteLine("\n");
         }
 
-        private void MostrarProveedorPorId()
+        public void MostrarPorId()
         {
             Console.Write("Ingrese el id del proveedor: ");
             int id;
@@ -130,7 +119,7 @@ namespace Lab.EF.UI
             Console.WriteLine($"Ubicación: {supplier.City}, {supplier.Country}\n");
         }
 
-        private void InsertarProveedor()
+        public void Insertar()
         {
             string companyName, city, country;
 
@@ -168,7 +157,7 @@ namespace Lab.EF.UI
             }
         }
 
-        private void ActualizarProveedor()
+        public void Actualizar()
         {
             int id = 0;
             string companyName, city, country;
@@ -220,7 +209,7 @@ namespace Lab.EF.UI
             }
         }
 
-        private void EliminarProveedor()
+        public void Eliminar()
         {
             Console.Write("Ingrese el id del proveedor a eliminar: ");
             int id;
@@ -244,11 +233,6 @@ namespace Lab.EF.UI
                 Console.WriteLine("ERROR! Ha ocurrido un error.");
                 Console.WriteLine(ex.Message + "\n");
             }
-        }
-
-        public void Salir()
-        {
-            this.opcionSeleccionada = opcionSalir;
         }
     }
 }

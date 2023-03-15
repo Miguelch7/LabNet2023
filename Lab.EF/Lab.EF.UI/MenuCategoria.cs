@@ -8,28 +8,17 @@ using System.Threading.Tasks;
 
 namespace Lab.EF.UI
 {
-    public class MenuCategoria
+    public class MenuCategoria : Menu, IABMMenu
     {
         private readonly CategoriesLogic _categoriesLogic;
-        private int opcionSeleccionada;
-        private const int opcionSalir = 6;
 
         public MenuCategoria()
         {
             _categoriesLogic = new CategoriesLogic();
+            opcionSalir = 6;
         }
 
-        public void Iniciar()
-        {
-            while (opcionSeleccionada != opcionSalir)
-            {
-                MostrarMenu();
-                opcionSeleccionada = SolicitarOpcion();
-                EjecutarAccion(opcionSeleccionada);
-            }
-        }
-
-        private void MostrarMenu()
+        protected override void MostrarMenu()
         {
             Console.WriteLine("---------- Menú de opciones Categoría ----------");
             Console.WriteLine("1) Listar todas las categorías");
@@ -40,7 +29,7 @@ namespace Lab.EF.UI
             Console.WriteLine("6) Volver al menú principal");
         }
 
-        private int SolicitarOpcion()
+        protected override int SolicitarOpcion()
         {
             Console.Write("Elija una opción: ");
             int option = 0;
@@ -59,24 +48,24 @@ namespace Lab.EF.UI
             return option;
         }
 
-        private void EjecutarAccion(int option)
+        protected override void EjecutarAccion(int option)
         {
             switch (option)
             {
                 case 1:
-                    ListarCategorias();
+                    MostrarTodos();
                     break;
                 case 2:
-                    MostrarCategoriaPorId();
+                    MostrarPorId();
                     break;
                 case 3:
-                    InsertarCategoria();
+                    Insertar();
                     break;
                 case 4:
-                    ActualizarCategoria();
+                    Actualizar();
                     break;
                 case 5:
-                    EliminarCategoria();
+                    Eliminar();
                     break;
                 case 6:
                     Salir();
@@ -87,7 +76,7 @@ namespace Lab.EF.UI
             }
         }
 
-        protected void ListarCategorias()
+        public void MostrarTodos()
         {
             List<Categories> listadoCategorias = _categoriesLogic.GetAll();
 
@@ -102,7 +91,7 @@ namespace Lab.EF.UI
             Console.WriteLine("\n");
         }
 
-        private void MostrarCategoriaPorId()
+        public void MostrarPorId()
         {
             Console.Write("Ingrese el id de la categoría: ");
             int id;
@@ -130,7 +119,7 @@ namespace Lab.EF.UI
             Console.WriteLine($"Descripción: { category.Description }\n");
         }
 
-        private void InsertarCategoria()
+        public void Insertar()
         {
             string categoryName, description;
 
@@ -164,7 +153,7 @@ namespace Lab.EF.UI
             }
         }
 
-        private void ActualizarCategoria()
+        public void Actualizar()
         {
             int id = 0;
             string categoryName, description;
@@ -211,7 +200,7 @@ namespace Lab.EF.UI
             }
         }
 
-        private void EliminarCategoria()
+        public void Eliminar()
         {
             Console.Write("Ingrese el id de la categoría a eliminar: ");
             int id;
@@ -235,11 +224,6 @@ namespace Lab.EF.UI
                 Console.WriteLine("ERROR! Ha ocurrido un error.");
                 Console.WriteLine(ex.Message + "\n");
             }
-        }
-
-        public void Salir()
-        {
-            this.opcionSeleccionada = opcionSalir;
         }
     }
 }
