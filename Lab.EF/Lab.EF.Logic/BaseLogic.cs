@@ -15,5 +15,10 @@ namespace Lab.EF.Logic
         {
             _context = new NorthwindContext();
         }
+
+        protected BaseLogic(NorthwindContext context)
+        {
+            _context = context;
+        }
     }
 }
