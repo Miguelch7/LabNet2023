@@ -50,11 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IABMMenu.cs" />
+    <Compile Include="CustomerOrdersDateDTO.cs" />
+    <Compile Include="EntitiesExtensionMethods.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="MenuPrincipal.cs" />
-    <Compile Include="MenuCategoria.cs" />
-    <Compile Include="MenuProveedor.cs" />
+    <Compile Include="OrdersByCustomerDTO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
