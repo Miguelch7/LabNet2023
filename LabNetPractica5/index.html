@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adivinar el Número!</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <button id="btn-reiniciar" class="btn">Reiniciar!</button>
+    <section>
+      <h1>Adivinar el Número!</h1>
+      <h2>(entre 1 y 20)</h2>
+    </section>
+  </header>
+  
+  <div class="line-with-circle">
+    <p id="numero-oculto">?</p>
+  </div>
+
+  <main>
+      <form class="form">
+        <input type="number" name="input-numero" id="input-numero" placeholder="Ingresa un número" />
+        <p id="mensaje" class="hidden">Debes ingresar un número del 1 al 20</p>
+        <input type="submit" id="btn-submit" name="btn-submit" class="btn" value="Probar!">
+      </form>
+      
+      <section class="container">
+        <p id="resultado">Resultado</p>
+        <div>
+          <p>Score: <span id="score">10</span></p>
+          <p>HighScore: <span id="high-score">10</span></p>
+        </div>
+      </section>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
