@@ -19,11 +19,9 @@ import {
   h2Intervalos
 } from './selectores.js';
 
-import {
-  esValido
-} from './utils/functions.js';
+import { esValido } from './utils/functions.js';
 
-export default class App {
+class App {
   score = SCORE_INICIO;
   highScore = HIGH_SCORE;  
   min = MIN_NUMBER;
@@ -63,7 +61,7 @@ export default class App {
     this.numeroAleatorio = Math.floor((Math.random() * this.max) + this.min);
     pNumeroOculto.textContent = '?';
 
-    body.classList.remove('background');
+    body.classList = [];
     pResultado.textContent = 'Resultado';
     
     this.ocultarMensajeError();
@@ -127,6 +125,13 @@ export default class App {
   }
 
   mostarResultadoGanador() {
+    Swal.fire({
+      title: 'Ganaste!',
+      text: `Tu puntuación es ${this.score}`,
+      icon: 'success',
+      confirmButtonColor: '#198754' 
+    });
+
     if (this.score > this.highScore) {
       localStorage.setItem('high-score', this.score);
       this.highScore = this.score;
@@ -139,6 +144,13 @@ export default class App {
   }
 
   mostarResultadoPerdedor() {
+    Swal.fire({
+      title: 'Perdiste :c',
+      text: `El número oculto era el ${this.numeroAleatorio}`,
+      icon: 'error',
+      confirmButtonColor: '#dc3545' 
+    });
+
     pResultado.textContent = 'Perdiste! :c';
     this.mostrarNumeroOculto();
     this.desactivarBtnSubmit();
@@ -153,3 +165,5 @@ export default class App {
     btnSumbit.setAttribute('disabled', true);
   }
 }
+
+export default App;

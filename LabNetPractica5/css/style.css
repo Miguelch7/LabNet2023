@@ -23,12 +23,6 @@ h1, h2 {
   margin: 0 .5rem;
 }
 
-h2 {
-  padding: .5rem 1rem;
-  background-color: #0dcaf0;
-  border-radius: 2rem;
-}
-
 main {
   display: flex;
   flex-direction: row;
@@ -143,6 +137,12 @@ form {
 
 .hidden {
   display: none;
+}
+
+#intervalos {
+  padding: .5rem 1rem;
+  background-color: #0dcaf0;
+  border-radius: 2rem;
 }
 
 #btn-submit {

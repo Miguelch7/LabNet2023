@@ -8,4 +8,4 @@ export const pNumeroOculto = document.querySelector("#numero-oculto");
 export const pResultado = document.querySelector("#resultado");
 export const pMensaje = document.querySelector("#mensaje");
 export const form = document.querySelector('form');
-export const h2Intervalos = document.querySelector('h2');
+export const h2Intervalos = document.querySelector('#intervalos');
