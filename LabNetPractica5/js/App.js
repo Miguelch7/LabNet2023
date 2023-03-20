@@ -1,7 +1,8 @@
 import {
   SCORE_INICIO,
   HIGH_SCORE,
-  RANGO_NUMEROS
+  MIN_NUMBER,
+  MAX_NUMBER
 } from './utils/constants.js';
 
 import {
@@ -24,11 +25,9 @@ import {
 
 export default class App {
   score = SCORE_INICIO;
-  highScore = HIGH_SCORE;
-  rangoNumeros = {
-    min: RANGO_NUMEROS.min,
-    max: RANGO_NUMEROS.max
-  }
+  highScore = HIGH_SCORE;  
+  min = MIN_NUMBER;
+  max = MAX_NUMBER;
   numeroAleatorio = 0;
 
   constructor() {
@@ -59,9 +58,9 @@ export default class App {
     this.highScore = localStorage.getItem('high-score') || this.highScore;
     spanHighScore.textContent = this.highScore;
     
-    h2Intervalos.textContent = `(entre ${this.rangoNumeros.min} y ${this.rangoNumeros.max})`;
+    h2Intervalos.textContent = `(entre ${this.min} y ${this.max})`;
     
-    this.numeroAleatorio = Math.floor((Math.random() * this.rangoNumeros.max) + this.rangoNumeros.min);
+    this.numeroAleatorio = Math.floor((Math.random() * this.max) + this.min);
     pNumeroOculto.textContent = '?';
 
     body.classList.remove('background');
@@ -73,7 +72,7 @@ export default class App {
   }
 
   validarNumero(num) {
-    if (!esValido(num, this.rangoNumeros.min, this.rangoNumeros.max)) {
+    if (!esValido(num, this.min, this.max)) {
       this.mostrarMensajeError();
       return;
     }
@@ -110,7 +109,7 @@ export default class App {
   }
 
   mostrarMensajeError() {
-    pMensaje.textContent = `Debes ingresar un número del ${this.rangoNumeros.min} al ${this.rangoNumeros.max}`;
+    pMensaje.textContent = `Debes ingresar un número del ${this.min} al ${this.max}`;
     pMensaje.classList.remove("hidden");
   }
 
