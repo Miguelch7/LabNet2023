@@ -1,0 +1,1 @@
+export const esValido = (num, min, max) => (num >= min && num <= max);

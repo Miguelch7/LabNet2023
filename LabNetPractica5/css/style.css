@@ -133,6 +133,10 @@ form {
   background-color: #60b347;
 }
 
+.background-red {
+  background-color: #ee1d32;
+}
+
 .btn:hover {
   cursor: pointer;
 }
