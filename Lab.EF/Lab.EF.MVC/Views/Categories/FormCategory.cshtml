@@ -1,0 +1,16 @@
+﻿@model Lab.EF.MVC.Models.CategoriesView
+@{
+    ViewBag.Title = "FormCategory";
+}
+
+<h2>@ViewBag.Text categoría</h2>
+
+@using (Html.BeginForm(ViewData["Action"].ToString(), "Categories", FormMethod.Post))
+{
+    @Html.TextBoxFor(m => m.CategoryName, new { @class = "form-control", @placeholder = "Ingrese el nombre de la categoría" })
+    @Html.TextBoxFor(m => m.Description, new { @class = "form-control", @placeholder = "Ingrese una descripción" })
+
+    <input type="submit" value="@ViewData["BtnText"]" />
+}
+
+<p>@Model.Id</p>

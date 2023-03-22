@@ -18,6 +18,7 @@
                 <td>@category.CategoryName</td>
                 <td>@category.Description</td>
                 <td>
+                    @Html.ActionLink("Editar", "Update", new { id = category.Id })
                     @Html.ActionLink("Eliminar", "Delete", new { id = category.Id })
                 </td>
             </tr>
@@ -25,3 +26,4 @@
     </tbody>
 </table>
 
+@Html.ActionLink("Agregar categoría", "Add")
