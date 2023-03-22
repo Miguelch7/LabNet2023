@@ -24,5 +24,13 @@ namespace Lab.EF.MVC.Controllers
 
             return View(categories);
         }
+
+        public ActionResult Delete(int id)
+        {
+            CategoriesLogic categoriesLogic = new CategoriesLogic();
+            categoriesLogic.Delete(id);
+
+            return RedirectToAction("Index");
+        }
     }
 }

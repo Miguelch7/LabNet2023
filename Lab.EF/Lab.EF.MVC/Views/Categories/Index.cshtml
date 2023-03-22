@@ -9,6 +9,7 @@
     <thead>
     <th>Categoria</th>
     <th>Descripcion</th>
+    <th>Acciones</th>
     </thead>
     <tbody>
         @foreach (Lab.EF.MVC.Models.CategoriesView category in Model)
@@ -16,7 +17,11 @@
             <tr>
                 <td>@category.CategoryName</td>
                 <td>@category.Description</td>
+                <td>
+                    @Html.ActionLink("Eliminar", "Delete", new { id = category.Id })
+                </td>
             </tr>
         }
     </tbody>
 </table>
+
