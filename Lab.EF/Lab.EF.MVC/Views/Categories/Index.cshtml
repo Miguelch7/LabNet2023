@@ -1,0 +1,22 @@
+﻿@model List<Lab.EF.MVC.Models.CategoriesView>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table>
+    <thead>
+    <th>Categoria</th>
+    <th>Descripcion</th>
+    </thead>
+    <tbody>
+        @foreach (Lab.EF.MVC.Models.CategoriesView category in Model)
+        {
+            <tr>
+                <td>@category.CategoryName</td>
+                <td>@category.Description</td>
+            </tr>
+        }
+    </tbody>
+</table>
