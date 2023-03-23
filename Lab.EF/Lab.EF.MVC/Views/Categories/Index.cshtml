@@ -21,7 +21,10 @@
                 <td>@category.Description</td>
                 <td>
                     @Html.ActionLink(" ", "Update", new { id = category.Id }, new { @class = "btn btn-warning rounded-circle bi-pencil-square text-white", title = "Actualizar categoría" })
-                    @Html.ActionLink(" ", "Delete", new { id = category.Id }, new { @class = "btn btn-danger rounded-circle bi-trash", title = "Eliminar categoría" })
+                    <button 
+                        class="btn btn-danger rounded-circle bi-trash"
+                        onclick = "mostrarAlerta('Categories', 'Delete', @category.Id, '¿Estás seguro que deseas eliminar la categoría?')"
+                    ></button>
                 </td>
             </tr>
         }
