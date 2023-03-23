@@ -36,6 +36,14 @@ namespace Lab.EF.MVC.Controllers
         [HttpPost]
         public ActionResult Add(CategoriesView categoryView)
         {
+            if (!ModelState.IsValid)
+            {
+                ViewData["Action"] = "Add";
+                ViewData["BtnText"] = "Crear categoría";
+
+                return View("FormCategory", categoryView);
+            }
+
             CategoriesLogic categoriesLogic = new CategoriesLogic();
 
             Categories category = new Categories()
@@ -63,7 +71,7 @@ namespace Lab.EF.MVC.Controllers
             };
 
             ViewData["Action"] = "Update";
-            ViewData["BtnText"] = "Guardar Cambios";
+            ViewData["BtnText"] = "Actualizar categoría";
 
             return View("FormCategory", categoryView);
         }
@@ -71,6 +79,14 @@ namespace Lab.EF.MVC.Controllers
         [HttpPost]
         public ActionResult Update(CategoriesView categoryView)
         {
+            if (!ModelState.IsValid)
+            {
+                ViewData["Action"] = "Update";
+                ViewData["BtnText"] = "Actualizar categoría";
+
+                return View("FormCategory", categoryView);
+            }
+
             CategoriesLogic categoriesLogic = new CategoriesLogic();
 
             Categories category = new Categories()
