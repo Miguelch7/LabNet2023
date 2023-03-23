@@ -11,12 +11,18 @@ namespace Lab.EF.MVC.Controllers
 {
     public class CategoriesController : Controller
     {
+
+        private readonly CategoriesLogic _categoriesLogic;
+
+        public CategoriesController()
+        {
+            _categoriesLogic = new CategoriesLogic();
+        }
+
         // GET: Categories
         public ActionResult Index()
         {
-            CategoriesLogic categoriesLogic = new CategoriesLogic();
-
-            List<CategoriesView> categories = categoriesLogic.GetAll().Select(c => new CategoriesView {
+            List<CategoriesView> categories = _categoriesLogic.GetAll().Select(c => new CategoriesView {
                 Id = c.CategoryID,
                 CategoryName = c.CategoryName,
                 Description = c.Description
@@ -46,15 +52,13 @@ namespace Lab.EF.MVC.Controllers
 
             try
             {
-                CategoriesLogic categoriesLogic = new CategoriesLogic();
-
                 Categories category = new Categories()
                 {
                     CategoryName = categoryView.CategoryName,
                     Description = categoryView.Description
                 };
 
-                categoriesLogic.Add(category);
+                _categoriesLogic.Add(category);
 
                 return RedirectToAction("Index");
             }
@@ -66,9 +70,7 @@ namespace Lab.EF.MVC.Controllers
 
         public ActionResult Update(int id)
         {
-            CategoriesLogic categoriesLogic = new CategoriesLogic();
-
-            Categories category = categoriesLogic.GetById(id);
+            Categories category = _categoriesLogic.GetById(id);
 
             if (category == null) return RedirectToAction("Error", new { message = $"La categoría con el id {id} no existe." });
 
@@ -98,8 +100,6 @@ namespace Lab.EF.MVC.Controllers
 
             try
             {
-                CategoriesLogic categoriesLogic = new CategoriesLogic();
-
                 Categories category = new Categories()
                 {
                     CategoryID = categoryView.Id,
@@ -107,7 +107,7 @@ namespace Lab.EF.MVC.Controllers
                     Description = categoryView.Description
                 };
 
-                categoriesLogic.Update(category);
+                _categoriesLogic.Update(category);
 
                 return RedirectToAction("Index");
             }
@@ -121,8 +121,7 @@ namespace Lab.EF.MVC.Controllers
         {
             try
             {
-                CategoriesLogic categoriesLogic = new CategoriesLogic();
-                categoriesLogic.Delete(id);
+                _categoriesLogic.Delete(id);
 
                 return RedirectToAction("Index");
             }
