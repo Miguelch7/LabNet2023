@@ -3,27 +3,31 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 class="mb-4 mt-0 pt-0 text-center">Categorías</h2>
 
-<table>
+<table class="table table-hover my-3 bg-white">
     <thead>
-    <th>Categoria</th>
-    <th>Descripcion</th>
-    <th>Acciones</th>
+        <tr class="bg-primary text-white">
+            <th>Categoria</th>
+            <th>Descripcion</th>
+            <th>Acciones</th>
+        </tr>
     </thead>
     <tbody>
         @foreach (Lab.EF.MVC.Models.CategoriesView category in Model)
         {
             <tr>
-                <td>@category.CategoryName</td>
+                <td class="fw-bold">@category.CategoryName</td>
                 <td>@category.Description</td>
                 <td>
-                    @Html.ActionLink("Editar", "Update", new { id = category.Id })
-                    @Html.ActionLink("Eliminar", "Delete", new { id = category.Id })
+                    @Html.ActionLink(" ", "Update", new { id = category.Id }, new { @class = "btn btn-warning rounded-circle bi-pencil-square text-white", title = "Actualizar categoría" })
+                    @Html.ActionLink(" ", "Delete", new { id = category.Id }, new { @class = "btn btn-danger rounded-circle bi-trash", title = "Eliminar categoría" })
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
-@Html.ActionLink("Agregar categoría", "Add")
+@Html.ActionLink(" Añadir categoría", "Add", new { }, new { @class = "btn btn-success bi-plus-circle", title = "Añadir categoría" })
+
+<a ></a>

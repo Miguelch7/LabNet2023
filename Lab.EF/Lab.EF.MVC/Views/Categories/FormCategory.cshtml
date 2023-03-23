@@ -1,16 +1,24 @@
 ﻿@model Lab.EF.MVC.Models.CategoriesView
 @{
-    ViewBag.Title = "FormCategory";
+    ViewBag.Title = ViewData["BtnText"];
 }
 
-<h2>@ViewBag.Text categoría</h2>
+<div class="card m-auto my-4">
+    <h3>@ViewBag.Title</h3>
+    @using (Html.BeginForm(ViewData["Action"].ToString(), "Categories", FormMethod.Post))
+    {
+        <div class="inputbox">
+            @Html.TextBoxFor(m => m.CategoryName, new { @class = "form-control" })
+            <span class="inputspan">Nombre de la categoría</span>
+            @Html.ValidationMessageFor(m => m.CategoryName, "", new { @class = "text-danger mt-4 d-block" })
+        </div>
+        <div class="inputbox">
+            @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+            <span class="inputspan">Descripción</span>
+        </div>
 
-@using (Html.BeginForm(ViewData["Action"].ToString(), "Categories", FormMethod.Post))
-{
-    @Html.TextBoxFor(m => m.CategoryName, new { @class = "form-control", @placeholder = "Ingrese el nombre de la categoría" })
-    @Html.TextBoxFor(m => m.Description, new { @class = "form-control", @placeholder = "Ingrese una descripción" })
+        <input type="submit" value="@ViewData["BtnText"]" class="btn btn-primary btn-block d-block" />
+        @Html.ActionLink("Volver atrás", "Index", "Categories", new { @class = "btn text-primary text-decoration-underline btn-block p-0 mt-1" })
+    }
+</div>
 
-    <input type="submit" value="@ViewData["BtnText"]" />
-}
-
-<p>@Model.Id</p>
