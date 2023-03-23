@@ -30,7 +30,7 @@ namespace Lab.EF.MVC.Controllers
             ViewData["Action"] = "Add";
             ViewData["BtnText"] = "Crear categoría";
 
-            return View("FormCategory", new CategoriesView() );
+            return View("FormCategory", new CategoriesView());
         }
 
         [HttpPost]
@@ -44,17 +44,24 @@ namespace Lab.EF.MVC.Controllers
                 return View("FormCategory", categoryView);
             }
 
-            CategoriesLogic categoriesLogic = new CategoriesLogic();
-
-            Categories category = new Categories()
+            try
             {
-                CategoryName = categoryView.CategoryName, 
-                Description = categoryView.Description
-            };
+                CategoriesLogic categoriesLogic = new CategoriesLogic();
 
-            categoriesLogic.Add(category);
+                Categories category = new Categories()
+                {
+                    CategoryName = categoryView.CategoryName,
+                    Description = categoryView.Description
+                };
 
-            return RedirectToAction("Index");
+                categoriesLogic.Add(category);
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Error", new { message = ex.Message });
+            }
         }
 
         public ActionResult Update(int id)
@@ -62,6 +69,8 @@ namespace Lab.EF.MVC.Controllers
             CategoriesLogic categoriesLogic = new CategoriesLogic();
 
             Categories category = categoriesLogic.GetById(id);
+
+            if (category == null) return RedirectToAction("Error", new { message = $"La categoría con el id {id} no existe." });
 
             CategoriesView categoryView = new CategoriesView
             {
@@ -87,26 +96,50 @@ namespace Lab.EF.MVC.Controllers
                 return View("FormCategory", categoryView);
             }
 
-            CategoriesLogic categoriesLogic = new CategoriesLogic();
-
-            Categories category = new Categories()
+            try
             {
-                CategoryID = categoryView.Id,
-                CategoryName = categoryView.CategoryName,
-                Description = categoryView.Description
-            };
+                CategoriesLogic categoriesLogic = new CategoriesLogic();
 
-            categoriesLogic.Update(category);
+                Categories category = new Categories()
+                {
+                    CategoryID = categoryView.Id,
+                    CategoryName = categoryView.CategoryName,
+                    Description = categoryView.Description
+                };
 
-            return RedirectToAction("Index");
+                categoriesLogic.Update(category);
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Error", new { message = ex.Message });
+            }
         }
 
         public ActionResult Delete(int id)
         {
-            CategoriesLogic categoriesLogic = new CategoriesLogic();
-            categoriesLogic.Delete(id);
+            try
+            {
+                CategoriesLogic categoriesLogic = new CategoriesLogic();
+                categoriesLogic.Delete(id);
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+            catch (ArgumentNullException ex)
+            {
+                return RedirectToAction("Error", new { message = $"La categoría con el id {id} no existe." });
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Error", new { message =  ex.Message });
+            }
+        }
+
+        public ActionResult Error(string message)
+        {
+            ViewBag.Message = message;
+            return View();
         }
     }
 }

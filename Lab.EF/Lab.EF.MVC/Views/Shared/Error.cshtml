@@ -1,14 +1,14 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width" />
-    <title>Error</title>
-</head>
-<body>
-    <hgroup>
-        <h1>Error.</h1>
-        <h2>Error al procesar la solicitud.</h2>
-    </hgroup>
-</body>
-</html>
+﻿@model string
+
+@{
+    ViewBag.Title = "Error";
+}
+
+<div>
+    <h1 class="text-danger">Error!</h1>
+    <p class="fs-5">@ViewBag.Message</p>
+    <p class="mt-4">Para más información, contáctanos al email: 
+        <a href="mailto:northwindapp@support.com.ar">northwindapp@support.com.ar</a>
+    </p>
+    @Html.ActionLink("Volver al incio", "Index", new { @class = "btn text-primary text-decoration-underline btn-block p-0 mt-1" })
+</div>
