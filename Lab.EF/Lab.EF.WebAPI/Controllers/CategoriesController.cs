@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Lab.EF.Entities;
 using Lab.EF.Logic;
 using Lab.EF.WebAPI.Models;
 
@@ -32,9 +33,20 @@ namespace Lab.EF.WebAPI.Controllers
         }
 
         // GET api/<controller>/5
-        public string Get(int id)
+        public IHttpActionResult Get(int id)
         {
-            return "value";
+            Categories category = _categoriesLogic.GetById(id);
+
+            if (category == null) return NotFound();
+
+            CategoriesView categoryView = new CategoriesView()
+            {
+                Id = category.CategoryID,
+                CategoryName = category.CategoryName,
+                Description = category.Description
+            };
+
+            return Ok(categoryView);
         }
 
         // POST api/<controller>
