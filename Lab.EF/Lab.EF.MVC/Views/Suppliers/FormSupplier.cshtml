@@ -1,0 +1,37 @@
+﻿@model Lab.EF.MVC.Models.SuppliersView
+@{
+    ViewBag.Title = ViewData["BtnText"];
+}
+
+<div class="card m-auto my-4">
+    <h3>@ViewBag.Title</h3>
+    @using (Html.BeginForm(ViewData["Action"].ToString(), "Suppliers", FormMethod.Post))
+    {
+        <div class="inputbox">
+            @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control" })
+            <span class="inputspan">Nombre de la compañia</span>
+            @Html.ValidationMessageFor(m => m.CompanyName, "", new { @class = "text-danger mt-4 d-block" })
+        </div>
+        <div class="inputbox">
+            @Html.TextBoxFor(m => m.ContactName, new { @class = "form-control" })
+            <span class="inputspan">Nombre del contacto</span>
+            @Html.ValidationMessageFor(m => m.ContactName, "", new { @class = "text-danger mt-4 d-block" })
+        </div>
+        <div class="inputbox">
+            @Html.TextBoxFor(m => m.ContactTitle, new { @class = "form-control" })
+            <span class="inputspan">Titulo del contacto</span>
+        </div>
+        <div class="inputbox">
+            @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+            <span class="inputspan">Ciudad</span>
+        </div>
+        <div class="inputbox">
+            @Html.TextBoxFor(m => m.Country, new { @class = "form-control" })
+            <span class="inputspan">País</span>
+        </div>
+
+        <input type="submit" value="@ViewData["BtnText"]" class="btn btn-primary btn-block d-block" />
+        @Html.ActionLink("Volver atrás", "Index", "Suppliers", new { @class = "btn text-primary text-decoration-underline btn-block p-0 mt-1" })
+    }
+</div>
+

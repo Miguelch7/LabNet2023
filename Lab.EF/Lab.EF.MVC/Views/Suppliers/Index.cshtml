@@ -1,0 +1,34 @@
+﻿@model List<Lab.EF.MVC.Models.SuppliersView>
+@{
+    ViewBag.Title = "Proveedores";
+}
+
+<h2 class="mb-4 mt-0 pt-0 text-center">Proveedores</h2>
+
+@Html.ActionLink(" Añadir proveedor", "Add", new { }, new { @class = "btn btn-success bi-plus-circle", title = "Añadir proveedor" })
+
+<table class="table table-hover my-3 bg-white">
+    <thead>
+        <tr class="bg-primary text-white">
+            <th>Proveedor</th>
+            <th>Ciudad</th>
+            <th>País</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Lab.EF.MVC.Models.SuppliersView supplier in Model)
+        {
+            <tr>
+                <td class="fw-bold">@supplier.CompanyName</td>
+                <td>@supplier.City</td>
+                <td>@supplier.Country</td>
+                <td>
+                    @Html.ActionLink(" ", "Update", new { id = supplier.Id }, new { @class = "btn btn-warning rounded-circle bi-pencil-square text-white", title = "Actualizar proveedor" })
+                    <button class="btn btn-danger rounded-circle bi-trash"
+                            onclick="mostrarAlerta('Suppliers', 'Delete', @supplier.Id, '¿Estás seguro que deseas eliminar el proveedor?')"></button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
