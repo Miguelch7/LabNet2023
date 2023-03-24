@@ -1,0 +1,23 @@
+﻿@model List<Lab.EF.WebAPI.Models.RickAndMortyAPI.Character>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Rick And Morty characters</h2>
+
+<section class="d-flex justify-content-around align-items-center flex-wrap">
+    @foreach (Lab.EF.WebAPI.Models.RickAndMortyAPI.Character character in Model)
+    {
+        <div class="card my-3 mx-1" style="width:20%;">
+            <img src="@character.Image" class="card-img-top" alt="@character.Name">
+            <div class="card-body">
+                <p class="card-text mb-1">
+                    @character.Status - @character.Species
+                </p>
+                <h4 class="card-title mb-3">@character.Name</h4>
+                <a href="#" class="btn btn-primary py-1 px-3">Ver más</a>
+            </div>
+        </div>
+    }
+</section>
