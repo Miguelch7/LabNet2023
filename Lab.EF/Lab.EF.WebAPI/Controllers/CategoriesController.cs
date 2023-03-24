@@ -75,8 +75,27 @@ namespace Lab.EF.WebAPI.Controllers
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody] string value)
+        public IHttpActionResult Put(int id, [FromBody] CategoriesView categoryView)
         {
+            Categories category = _categoriesLogic.GetById(id);
+
+            if (category == null) return NotFound();
+
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            try
+            {
+                category.CategoryName = categoryView.CategoryName;
+                category.Description = categoryView.Description;
+
+                _categoriesLogic.Update(category);
+
+                return Ok(categoryView);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
 
         // DELETE api/<controller>/5
