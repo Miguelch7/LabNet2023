@@ -50,8 +50,28 @@ namespace Lab.EF.WebAPI.Controllers
         }
 
         // POST api/<controller>
-        public void Post([FromBody] string value)
+        public IHttpActionResult Post([FromBody] CategoriesView categoryView)
         {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            try
+            {
+                Categories category = new Categories()
+                {
+                    CategoryName = categoryView.CategoryName,
+                    Description = categoryView.Description
+                };
+
+                _categoriesLogic.Add(category);
+
+                categoryView.Id = category.CategoryID;
+
+                return Ok(categoryView);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
 
         // PUT api/<controller>/5
