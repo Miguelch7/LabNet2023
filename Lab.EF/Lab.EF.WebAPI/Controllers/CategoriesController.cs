@@ -99,8 +99,21 @@ namespace Lab.EF.WebAPI.Controllers
         }
 
         // DELETE api/<controller>/5
-        public void Delete(int id)
+        public IHttpActionResult Delete(int id)
         {
+            Categories category = _categoriesLogic.GetById(id);
+
+            if (category == null) return NotFound();
+
+            try
+            {
+                _categoriesLogic.Delete(id);
+                return Ok($"La categoría con id {id} se ha eliminado exitosamente");
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
     }
 }
