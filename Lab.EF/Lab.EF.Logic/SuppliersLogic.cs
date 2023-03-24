@@ -31,6 +31,9 @@ namespace Lab.EF.Logic
             Suppliers supplierDB = _context.Suppliers.Find(supplier.SupplierID);
 
             supplierDB.CompanyName = supplier.CompanyName;
+            supplierDB.ContactName = supplier.ContactName;
+            supplierDB.ContactTitle = supplier.ContactTitle;
+            supplierDB.Address = supplier.Address;
             supplierDB.City = supplier.City;
             supplierDB.Country = supplier.Country;
 
