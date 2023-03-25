@@ -163,18 +163,12 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\RickAndMortyAPIController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CategoriesView.cs" />
-    <Compile Include="Models\RickAndMortyAPI\Character.cs" />
-    <Compile Include="Models\RickAndMortyAPI\Info.cs" />
-    <Compile Include="Models\RickAndMortyAPI\Location.cs" />
-    <Compile Include="Models\RickAndMortyAPI\Origin.cs" />
-    <Compile Include="Models\RickAndMortyAPI\RickAndMortyAPI.cs" />
     <Compile Include="Models\SuppliersView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -243,7 +237,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\RickAndMortyAPI\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
