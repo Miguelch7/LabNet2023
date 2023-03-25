@@ -16,7 +16,7 @@
                     @character.Status - @character.Species
                 </p>
                 <h4 class="card-title mb-3">@character.Name</h4>
-                <a href="#" class="btn btn-primary py-1 px-3">Ver más</a>
+                @Html.ActionLink("Ver más", "Details", new { id = character.Id }, new { @class = "btn btn-primary py-1 px-3", title = $"Ver más detalles sobre {character.Name}" })
             </div>
         </div>
     }
