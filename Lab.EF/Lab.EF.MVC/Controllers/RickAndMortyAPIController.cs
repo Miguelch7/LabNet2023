@@ -21,13 +21,18 @@ namespace Lab.EF.MVC.Controllers
         }
 
         // GET: RickAndMortyAPI
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(int page = 1)
         {
-            HttpResponseMessage responseMessage = await _httpClient.GetAsync("character");
+            if (page < 1) return RedirectToAction("Error", new { message = "El número de página debe ser un número positivo" });
+
+            HttpResponseMessage responseMessage = await _httpClient.GetAsync($"character?page={page}");
 
             if (!responseMessage.IsSuccessStatusCode) return RedirectToAction("Error", new { message = "Hubo un error al intentar cargar los personajes." });
 
             RickAndMortyAPI response = await responseMessage.Content.ReadAsAsync<RickAndMortyAPI>();
+
+            ViewBag.CurrentPage = page;
+            ViewBag.MaxPage = response.Info.Pages;
 
             List<Character> characters = response.Results;
             

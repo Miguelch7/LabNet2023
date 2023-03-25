@@ -3,8 +3,29 @@
 @{
     ViewBag.Title = "Index";
 }
+<nav class="mt-4 d-flex justify-content-between">
+    <h2>Rick And Morty characters</h2>
+    
+    <ul class="pagination justify-content-center">
+        @if (ViewBag.CurrentPage > 1)
+        {
+            <li class="page-item">
+                @Html.ActionLink("Previous Page", "Index", new { page = ViewBag.CurrentPage - 1 }, new { @class = "page-link" })
+            </li>
+        }
 
-<h2>Rick And Morty characters</h2>
+        <li class="page-item disabled">
+            <a class="page-link" href="#">@ViewBag.CurrentPage</a>
+        </li>
+
+        @if (ViewBag.CurrentPage < ViewBag.MaxPage)
+        {
+            <li class="page-item">
+                @Html.ActionLink("Next Page", "Index", new { page = ViewBag.CurrentPage + 1 }, new { @class = "page-link" })
+            </li>
+        }
+    </ul>
+</nav>
 
 <section class="d-flex justify-content-around align-items-center flex-wrap">
     @foreach (Lab.EF.MVC.Models.RickAndMortyAPI.Character character in Model)
@@ -21,3 +42,4 @@
         </div>
     }
 </section>
+
