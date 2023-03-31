@@ -3,7 +3,7 @@
     <div class="flex justify-between text-white">
       <div class="flex space-x-4">
         <div>
-          <a href="#" class="flex items-center py-5 px-2 hover:text-green-400">
+          <a href="/" class="flex items-center py-5 px-2 hover:text-green-400">
             <img
               class="h-6 w-6 mr-1"
               src="{{ northwindLogoUrl }}"
@@ -15,7 +15,7 @@
 
         <!-- Primary Menu -->
         <div class="hidden md:flex items-center space-x-1">
-          <a href="#" class="py-5 px-3 hover:text-green-400">Categorías</a>
+          <a href="/categories" class="py-5 px-3 hover:text-green-400">Categorías</a>
         </div>
       </div>
 
@@ -31,7 +31,7 @@
 
   <!-- Mobile Menu -->
   <div class="mobile-menu md:hidden text-white" [ngClass]="{ 'hidden': !showMobileMenu }">
-    <a href="#" class="block py-2 px-4 text-sm hover:bg-green-400 hover:text-gray-900">
+    <a href="/categories" class="block py-2 px-4 text-sm hover:bg-green-400 hover:text-gray-900">
       Categorías
     </a>
   </div>
