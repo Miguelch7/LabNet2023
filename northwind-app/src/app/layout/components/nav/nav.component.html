@@ -1,0 +1,38 @@
+<nav class="bg-gray-900">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex justify-between text-white">
+      <div class="flex space-x-4">
+        <div>
+          <a href="#" class="flex items-center py-5 px-2 hover:text-green-400">
+            <img
+              class="h-6 w-6 mr-1"
+              src="{{ northwindLogoUrl }}"
+              alt="NorthwindApp Logo"
+            />
+            <span class="font-bold">NorthwindApp</span>
+          </a>
+        </div>
+
+        <!-- Primary Menu -->
+        <div class="hidden md:flex items-center space-x-1">
+          <a href="#" class="py-5 px-3 hover:text-green-400">Categorías</a>
+        </div>
+      </div>
+
+      <div class="md:hidden flex items-center">
+        <button (click)="toggleMobileMenu()" class="mobile-menu-button hover:scale-110 transition ease-in-out duration-300">
+          <i class="material-icons-outlined">
+            menu
+          </i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu md:hidden text-white" [ngClass]="{ 'hidden': !showMobileMenu }">
+    <a href="#" class="block py-2 px-4 text-sm hover:bg-green-400 hover:text-gray-900">
+      Categorías
+    </a>
+  </div>
+</nav>
