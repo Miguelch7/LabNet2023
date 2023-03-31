@@ -19,4 +19,12 @@ export class CategoriesService {
   getAll(): Observable<Category[]> {
     return this.http.get<Category[]>(this.url);
   }
+
+  getById(id: number): Observable<Category> {
+    return this.http.get<Category>(`${this.url}/${id}`);
+  }
+
+  add(category: Category): Observable<Category> {
+    return this.http.post<Category>(this.url, category);
+  }
 }

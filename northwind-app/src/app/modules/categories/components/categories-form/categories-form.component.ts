@@ -40,6 +40,7 @@ export class CategoriesFormComponent implements OnInit {
     };
 
     this.sendCategory.emit(this.category);
+    this.onReset();
   }
 
   onReset(): void {
