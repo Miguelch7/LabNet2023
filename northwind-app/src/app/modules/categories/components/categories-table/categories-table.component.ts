@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Category } from '../../models/Category';
+import { CategoriesService } from '../../services/categories.service';
 
 @Component({
   selector: 'app-categories-table',
@@ -8,11 +9,16 @@ import { Category } from '../../models/Category';
 })
 export class CategoriesTableComponent implements OnInit {
 
-  @Input() categoriesList: Array<Category> = [];
+  categoriesList: Array<Category> = [];
 
-  constructor() { }
+  constructor(
+    private categoriesService: CategoriesService
+  ) { }
 
   ngOnInit(): void {
+    this.categoriesService.getAll().subscribe((categories: Category[]) => {
+      this.categoriesList = categories;
+    });
   }
 
 }
