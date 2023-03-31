@@ -6,6 +6,7 @@ import { CategoriesPageComponent } from './pages/categories-page/categories-page
 import { CategoriesTableComponent } from './components/categories-table/categories-table.component';
 import { AddCategoriesPageComponent } from './pages/add-categories-page/add-categories-page.component';
 import { CategoriesFormComponent } from './components/categories-form/categories-form.component';
+import { UpdateCategoriesPageComponent } from './pages/update-categories-page/update-categories-page.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { CategoriesFormComponent } from './components/categories-form/categories
     CategoriesPageComponent,
     CategoriesTableComponent,
     AddCategoriesPageComponent,
-    CategoriesFormComponent
+    CategoriesFormComponent,
+    UpdateCategoriesPageComponent
   ],
   imports: [
     CommonModule,
