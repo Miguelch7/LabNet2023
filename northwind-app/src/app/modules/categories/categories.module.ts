@@ -4,12 +4,16 @@ import { CommonModule } from '@angular/common';
 import { CategoriesRoutingModule } from './categories-routing.module';
 import { CategoriesPageComponent } from './pages/categories-page/categories-page.component';
 import { CategoriesTableComponent } from './components/categories-table/categories-table.component';
+import { AddCategoriesPageComponent } from './pages/add-categories-page/add-categories-page.component';
+import { CategoriesFormComponent } from './components/categories-form/categories-form.component';
 
 
 @NgModule({
   declarations: [
     CategoriesPageComponent,
-    CategoriesTableComponent
+    CategoriesTableComponent,
+    AddCategoriesPageComponent,
+    CategoriesFormComponent
   ],
   imports: [
     CommonModule,
