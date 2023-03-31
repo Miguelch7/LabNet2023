@@ -7,34 +7,18 @@
     </tr>
   </thead>
   <tbody>
-    <tr class="bg-gray-200 text-left">
+    <tr *ngFor="let category of categoriesList" class="bg-gray-200 text-left">
       <td class="p-3 text-gray-700 font-bold uppercase">
-        Beverages
+        {{ category.categoryName }}
       </td>
       <td class="p-3 max-w-md md:max-w-xl">
-        Soft drinks, coffees, teas, beers, and ales
+        {{ category.description }}
       </td>
       <td class="p-3">
-        <a [routerLink]="['/update/', '1']" class="text-gray-400 hover:text-yellow-500 mx-1 md:mx-2">
+        <a [routerLink]="['/update/', category.id]" class="text-gray-400 hover:text-yellow-500 mx-1 md:mx-2">
           <i class="material-icons">edit</i>
         </a>
-        <a href="#" class="text-gray-400 hover:text-red-500 mx-1 md:mx-2">
-          <i class="material-icons">delete</i>
-        </a>
-      </td>
-    </tr>
-    <tr class="bg-gray-200 text-left">
-      <td class="p-3 text-gray-700 font-bold uppercase">
-        Beverages
-      </td>
-      <td class="p-3 max-w-md md:max-w-xl">
-        Soft drinks, coffees, teas, beers, and ales
-      </td>
-      <td class="p-3">
-        <a [routerLink]="['/', 'update/', '2']" class="text-gray-400 hover:text-yellow-500 mx-1 md:mx-2">
-          <i class="material-icons">edit</i>
-        </a>
-        <a href="#" class="text-gray-400 hover:text-red-500 mx-1 md:mx-2">
+        <a [routerLink]="['/delete/', category.id]" class="text-gray-400 hover:text-red-500 mx-1 md:mx-2">
           <i class="material-icons">delete</i>
         </a>
       </td>

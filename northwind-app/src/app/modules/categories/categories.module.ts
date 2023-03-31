@@ -8,6 +8,7 @@ import { CategoriesTableComponent } from './components/categories-table/categori
 import { AddCategoriesPageComponent } from './pages/add-categories-page/add-categories-page.component';
 import { CategoriesFormComponent } from './components/categories-form/categories-form.component';
 import { UpdateCategoriesPageComponent } from './pages/update-categories-page/update-categories-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { UpdateCategoriesPageComponent } from './pages/update-categories-page/up
   imports: [
     CommonModule,
     CategoriesRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ]
 })
 export class CategoriesModule { }
