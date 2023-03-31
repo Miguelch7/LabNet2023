@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: '',
     component: HomePageComponent
+  },
+  {
+    path: 'categories',
+    loadChildren: () => import('./modules/categories/categories-routing.module').then(m => m.CategoriesRoutingModule)
   }
 ];
 
