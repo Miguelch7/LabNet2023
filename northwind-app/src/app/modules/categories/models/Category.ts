@@ -1,4 +1,4 @@
-export interface CategoriesModel {
+export interface Category {
   id?: number,
   categoryName: string,
   description: string

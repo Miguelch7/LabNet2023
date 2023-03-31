@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CategoriesModel } from '../../models/CategoriesModel';
+import { Category } from '../../models/Category';
 
 @Component({
   selector: 'app-categories-form',
@@ -11,11 +11,11 @@ export class CategoriesFormComponent implements OnInit {
 
   formCategories!: FormGroup;
 
-  @Input() category: CategoriesModel = {
+  @Input() category: Category = {
     categoryName: '',
     description: ''
   };
-  @Output() sendCategory = new EventEmitter<CategoriesModel>();
+  @Output() sendCategory = new EventEmitter<Category>();
 
   constructor(
     private formBuilder: FormBuilder

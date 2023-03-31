@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoriesModel } from '../../models/CategoriesModel';
+import { Category } from '../../models/Category';
 
 @Component({
   selector: 'app-update-categories-page',
@@ -8,7 +8,7 @@ import { CategoriesModel } from '../../models/CategoriesModel';
 })
 export class UpdateCategoriesPageComponent implements OnInit {
 
-  category: CategoriesModel = {
+  category: Category = {
     categoryName: '',
     description: ''
   };
@@ -18,7 +18,7 @@ export class UpdateCategoriesPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  UpdateCategory(category: CategoriesModel): void {
+  UpdateCategory(category: Category): void {
     this.category = category;
     console.log('Recibiendo...', this.category);
   }

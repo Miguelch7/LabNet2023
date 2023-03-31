@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoriesModel } from '../../models/CategoriesModel';
+import { Category } from '../../models/Category';
 
 @Component({
   selector: 'app-add-categories-page',
@@ -10,7 +10,7 @@ export class AddCategoriesPageComponent implements OnInit {
 
   constructor() { }
 
-  category: CategoriesModel = {
+  category: Category = {
     categoryName: '',
     description: ''
   };
@@ -18,7 +18,7 @@ export class AddCategoriesPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  AddCategory(category: CategoriesModel): void {
+  AddCategory(category: Category): void {
     this.category = category;
     console.log('Recibiendo...', this.category);
   }
