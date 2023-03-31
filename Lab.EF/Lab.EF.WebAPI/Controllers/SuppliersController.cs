@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Lab.EF.Entities;
 using Lab.EF.Logic;
 using Lab.EF.MVC.Models;
@@ -11,6 +12,7 @@ using Lab.EF.WebAPI.Models;
 
 namespace Lab.EF.WebAPI.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SuppliersController : ApiController
     {
         private readonly SuppliersLogic _suppliersLogic;
@@ -25,13 +27,13 @@ namespace Lab.EF.WebAPI.Controllers
         {
             List<SuppliersView> suppliers = _suppliersLogic.GetAll().Select(s => new SuppliersView
             {
-                Id = s.SupplierID,
-                CompanyName = s.CompanyName,
-                ContactName = s.ContactName,
-                ContactTitle = s.ContactTitle,
-                Address = s.Address,
-                City = s.City,
-                Country = s.Country
+                id = s.SupplierID,
+                companyName = s.CompanyName,
+                contactName = s.ContactName,
+                contactTitle = s.ContactTitle,
+                address = s.Address,
+                city = s.City,
+                country = s.Country
             }).ToList();
 
             return Ok(suppliers);
@@ -46,13 +48,13 @@ namespace Lab.EF.WebAPI.Controllers
 
             SuppliersView supplierView = new SuppliersView()
             {
-                Id = supplier.SupplierID,
-                CompanyName = supplier.CompanyName,
-                ContactName = supplier.ContactName,
-                ContactTitle = supplier.ContactTitle,
-                Address = supplier.Address,
-                City = supplier.City,
-                Country = supplier.Country
+                id = supplier.SupplierID,
+                companyName = supplier.CompanyName,
+                contactName = supplier.ContactName,
+                contactTitle = supplier.ContactTitle,
+                address = supplier.Address,
+                city = supplier.City,
+                country = supplier.Country
             };
 
             return Ok(supplierView);
@@ -67,17 +69,17 @@ namespace Lab.EF.WebAPI.Controllers
             {
                 Suppliers supplier = new Suppliers()
                 {
-                    CompanyName = supplierView.CompanyName,
-                    ContactName = supplierView.ContactName,
-                    ContactTitle = supplierView.ContactTitle,
-                    Address = supplierView.Address,
-                    City = supplierView.City,
-                    Country = supplierView.Country
+                    CompanyName = supplierView.companyName,
+                    ContactName = supplierView.contactName,
+                    ContactTitle = supplierView.contactTitle,
+                    Address = supplierView.address,
+                    City = supplierView.city,
+                    Country = supplierView.country
                 };
 
                 _suppliersLogic.Add(supplier);
 
-                supplierView.Id = supplier.SupplierID;
+                supplierView.id = supplier.SupplierID;
 
                 return Ok(supplierView);
             }
@@ -98,12 +100,12 @@ namespace Lab.EF.WebAPI.Controllers
 
             try
             {
-                supplier.CompanyName = supplierView.CompanyName;
-                supplier.ContactName = supplierView.ContactName;
-                supplier.ContactTitle = supplierView.ContactTitle;
-                supplier.Address = supplierView.Address;
-                supplier.City = supplierView.City;
-                supplier.Country = supplierView.Country;
+                supplier.CompanyName = supplierView.companyName;
+                supplier.ContactName = supplierView.contactName;
+                supplier.ContactTitle = supplierView.contactTitle;
+                supplier.Address = supplierView.address;
+                supplier.City = supplierView.city;
+                supplier.Country = supplierView.country;
 
                 _suppliersLogic.Update(supplier);
 

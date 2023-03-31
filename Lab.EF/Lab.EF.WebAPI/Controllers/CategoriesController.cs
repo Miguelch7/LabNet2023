@@ -4,12 +4,14 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Lab.EF.Entities;
 using Lab.EF.Logic;
 using Lab.EF.WebAPI.Models;
 
 namespace Lab.EF.WebAPI.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CategoriesController : ApiController
     {
         private readonly CategoriesLogic _categoriesLogic;
@@ -24,9 +26,9 @@ namespace Lab.EF.WebAPI.Controllers
         {
             List<CategoriesView> categories = _categoriesLogic.GetAll().Select(c => new CategoriesView
             {
-                Id = c.CategoryID,
-                CategoryName = c.CategoryName,
-                Description = c.Description
+                id = c.CategoryID,
+                categoryName = c.CategoryName,
+                description = c.Description
             }).ToList();
 
             return Ok(categories);
@@ -41,9 +43,9 @@ namespace Lab.EF.WebAPI.Controllers
 
             CategoriesView categoryView = new CategoriesView()
             {
-                Id = category.CategoryID,
-                CategoryName = category.CategoryName,
-                Description = category.Description
+                id = category.CategoryID,
+                categoryName = category.CategoryName,
+                description = category.Description
             };
 
             return Ok(categoryView);
@@ -58,13 +60,13 @@ namespace Lab.EF.WebAPI.Controllers
             {
                 Categories category = new Categories()
                 {
-                    CategoryName = categoryView.CategoryName,
-                    Description = categoryView.Description
+                    CategoryName = categoryView.categoryName,
+                    Description = categoryView.description
                 };
 
                 _categoriesLogic.Add(category);
 
-                categoryView.Id = category.CategoryID;
+                categoryView.id = category.CategoryID;
 
                 return Ok(categoryView);
             }
@@ -85,8 +87,8 @@ namespace Lab.EF.WebAPI.Controllers
 
             try
             {
-                category.CategoryName = categoryView.CategoryName;
-                category.Description = categoryView.Description;
+                category.CategoryName = categoryView.categoryName;
+                category.Description = categoryView.description;
 
                 _categoriesLogic.Update(category);
 
