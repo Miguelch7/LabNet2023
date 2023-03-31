@@ -15,7 +15,12 @@
 
         <!-- Primary Menu -->
         <div class="hidden md:flex items-center space-x-1">
-          <a href="/categories" class="py-5 px-3 hover:text-green-400">Categorías</a>
+          <a 
+            *ngFor="let section of sectionsList"
+            [routerLink]="section.router"  
+            title="{{ section.text }}"
+            class="py-5 px-3 hover:text-green-400"
+          >{{ section.name }}</a>
         </div>
       </div>
 
@@ -31,8 +36,13 @@
 
   <!-- Mobile Menu -->
   <div class="mobile-menu md:hidden text-white" [ngClass]="{ 'hidden': !showMobileMenu }">
-    <a href="/categories" class="block py-2 px-4 text-sm hover:bg-green-400 hover:text-gray-900">
-      Categorías
+    <a 
+      *ngFor="let section of sectionsList"
+      [routerLink]="section.router"  
+      title="{{ section.text }}"  
+      class="block py-2 px-4 text-sm hover:bg-green-400 hover:text-gray-900"
+    >
+      {{ section.name }}
     </a>
   </div>
 </nav>

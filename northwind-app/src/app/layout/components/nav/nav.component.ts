@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Section } from 'src/app/core/models/Section';
 
 @Component({
   selector: 'app-nav',
@@ -9,6 +10,7 @@ export class NavComponent implements OnInit {
 
   northwindLogoUrl: string = '../../../../assets/images/northwind-logo.png';
   showMobileMenu: boolean = false;
+  @Input() sectionsList: Array<Section> = [];
 
   constructor() { }
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Section } from './core/models/Section';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'northwind-app';
+
+  sectionsList: Array<Section> = [];
+  
+  constructor() { }
+
+  ngOnInit(): void {
+    this.sectionsList = [
+      {
+        name: 'Categorías',
+        text: 'Cree, liste, edite y elimine todas las categorías de Northwind.',
+        icon: 'category',
+        router: ['/', 'categories']
+      }
+    ]
+  }
+  
 }
