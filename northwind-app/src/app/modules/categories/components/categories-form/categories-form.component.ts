@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CategoriesModel } from '../../models/CategoriesModel';
 
 @Component({
   selector: 'app-categories-form',
@@ -7,9 +9,52 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriesFormComponent implements OnInit {
 
-  constructor() { }
+  formCategories!: FormGroup;
+
+  @Input() category: CategoriesModel = {
+    categoryName: '',
+    description: ''
+  };
+  @Output() sendCategory = new EventEmitter<CategoriesModel>();
+
+  constructor(
+    private formBuilder: FormBuilder
+  ) { }
 
   ngOnInit(): void {
+    this.formCategories = this.formBuilder.group({
+      categoryName: [
+        this.category.categoryName, 
+        [Validators.required, Validators.minLength(3)]
+      ],
+      description: [
+        this.category.description
+      ]
+    })
+  }
+
+  onSubmit(): void {
+    this.category = { 
+      categoryName: this.categoryName?.value, 
+      description: this.description?.value, 
+    };
+
+    this.sendCategory.emit(this.category);
+  }
+
+  onReset(): void {
+    this.formCategories = this.formBuilder.group({
+      categoryName: ['', [Validators.required, Validators.minLength(3)]],
+      description: ['']
+    });
+  }
+
+  get categoryName() {
+    return this.formCategories.get('categoryName');
+  }
+
+  get description() {
+    return this.formCategories.get('description');
   }
 
 }

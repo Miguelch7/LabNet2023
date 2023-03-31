@@ -11,6 +11,9 @@
     Crear nueva categoría
   </a>
   
-  <app-categories-form></app-categories-form>
+  <app-categories-form
+    [category]="category" 
+    (sendCategory)="UpdateCategory($event)"
+  ></app-categories-form>
   
 </section>

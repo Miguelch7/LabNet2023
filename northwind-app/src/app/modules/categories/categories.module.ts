@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { CategoriesRoutingModule } from './categories-routing.module';
 import { CategoriesPageComponent } from './pages/categories-page/categories-page.component';
@@ -19,7 +20,8 @@ import { UpdateCategoriesPageComponent } from './pages/update-categories-page/up
   ],
   imports: [
     CommonModule,
-    CategoriesRoutingModule
+    CategoriesRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class CategoriesModule { }
