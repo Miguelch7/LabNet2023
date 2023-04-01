@@ -11,8 +11,8 @@
       <td colspan="5">No hay proveedores para mostrar.</td>
     </tr>
     <tr *ngFor="let supplier of suppliersList" class="bg-gray-200 text-left">
-      <td class="p-3 text-gray-700 font-bold uppercase">
-        {{ supplier.companyName }}
+      <td class="p-3 text-gray-700 font-bold">
+        {{ supplier.companyName | uppercase }}
       </td>
       <td class="p-3">
         <p class="font-semibold">{{ supplier.contactName }}</p>
