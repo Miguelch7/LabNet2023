@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () => import('./modules/categories/categories-routing.module').then(m => m.CategoriesRoutingModule)
   },
   {
+    path: 'suppliers',
+    loadChildren: () => import('./modules/suppliers/suppliers-routing.module').then(m => m.SuppliersRoutingModule)
+  },
+  {
     path: 'error',
     loadChildren: () => import('./modules/errors/errors-routing.module').then(m => m.ErrorsRoutingModule)
   },

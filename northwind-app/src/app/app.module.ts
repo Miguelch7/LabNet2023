@@ -7,6 +7,7 @@ import { LayoutModule } from './layout/layout.module';
 import { HomeModule } from './modules/home/home.module';
 import { CategoriesModule } from './modules/categories/categories.module';
 import { ErrorsModule } from './modules/errors/errors.module';
+import { SuppliersModule } from './modules/suppliers/suppliers.module';
 
 @NgModule({
   declarations: [
@@ -15,9 +16,10 @@ import { ErrorsModule } from './modules/errors/errors.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    LayoutModule,
     HomeModule,
     CategoriesModule,
-    LayoutModule,
+    SuppliersModule,
     ErrorsModule
   ],
   providers: [],
