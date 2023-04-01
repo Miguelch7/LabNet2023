@@ -7,6 +7,7 @@ import { SuppliersPageComponent } from './pages/suppliers-page/suppliers-page.co
 import { SuppliersTableComponent } from './components/suppliers-table/suppliers-table.component';
 import { SuppliersFormComponent } from './components/suppliers-form/suppliers-form.component';
 import { AddSuppliersPageComponent } from './pages/add-suppliers-page/add-suppliers-page.component';
+import { UpdateSuppliersPageComponent } from './pages/update-suppliers-page/update-suppliers-page.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { AddSuppliersPageComponent } from './pages/add-suppliers-page/add-suppli
     SuppliersTableComponent,
     AddSuppliersPageComponent,
     SuppliersFormComponent,
+    UpdateSuppliersPageComponent,
   ],
   imports: [
     CommonModule,
