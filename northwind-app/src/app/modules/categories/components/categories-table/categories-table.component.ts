@@ -21,4 +21,10 @@ export class CategoriesTableComponent implements OnInit {
     });
   }
 
+  onDelete(id: number) {
+    this.categoriesService.delete(id).subscribe(res => {
+      this.categoriesList = this.categoriesList.filter(c => c.id != id);
+    });
+  }
+
 }

@@ -27,4 +27,8 @@ export class CategoriesService {
   add(category: Category): Observable<Category> {
     return this.http.post<Category>(this.url, category);
   }
+
+  delete(id: number): Observable<string> {
+    return this.http.delete<string>(`${this.url}/${id}`);
+  }
 }

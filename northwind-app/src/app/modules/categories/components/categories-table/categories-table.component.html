@@ -15,12 +15,20 @@
         {{ category.description }}
       </td>
       <td class="p-3">
-        <a [routerLink]="['/update/', category.id]" class="text-gray-400 hover:text-yellow-500 mx-1 md:mx-2">
+        <a 
+          [routerLink]="['/update/', category.id]" 
+          class="text-gray-400 hover:text-yellow-500 mx-1 md:mx-2"
+          title="Editar categoría"
+        >
           <i class="material-icons">edit</i>
         </a>
-        <a [routerLink]="['/delete/', category.id]" class="text-gray-400 hover:text-red-500 mx-1 md:mx-2">
+        <button 
+          (click)="onDelete(category.id!)" 
+          class="text-gray-400 hover:text-red-500 mx-1 md:mx-2"
+          title="Eliminar categoría"
+        >
           <i class="material-icons">delete</i>
-        </a>
+        </button>
       </td>
     </tr>
   </tbody>
