@@ -36,6 +36,7 @@ export class UpdateCategoriesPageComponent implements OnInit {
       this.categoriesService.getById(id).subscribe((categoryResponse: Category) => {
         this.formCategories.setValue(categoryResponse);
       }, error => {
+        console.log(error);
         if (error.status == 404) {
           this.router.navigate(['/error/not-found']);
         } else {

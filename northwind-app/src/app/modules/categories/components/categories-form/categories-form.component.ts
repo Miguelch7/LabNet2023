@@ -19,6 +19,9 @@ export class CategoriesFormComponent implements OnInit {
     description: ['']
   });
 
+  @Input() btnText: string = 'Guardar';
+  @Input() btnIcon: string = 'save';
+
   @Output() sendCategory = new EventEmitter<Category>();
 
   constructor(
