@@ -1,0 +1,23 @@
+<section class="flex items-center sm:p-16">
+	<div class="container flex flex-col items-center justify-center px-5 mx-auto my-8 space-y-8 text-center sm:max-w-md">
+    <div class="flex items-center justify-center text-gray-300">
+      <i class="material-icons-outlined text-8xl md:text-9xl mr-2">report_problem</i>
+      <h2 class="font-extrabold text-8xl md:text-9xl ml-2">
+        404
+      </h2>
+    </div>
+    <p class="text-2xl">
+      No se ha encontrado la página solicitada.
+    </p>
+		<a 
+      [routerLink]="'/'"
+      class="flex items-center justify-center px-3 py-1.5 text-white bg-green-700 rounded-md hover:bg-green-500 transition duration-300 cursor-pointer"
+      title="Ir al inicio" 
+    >
+    <i class="material-icons-outlined text-md mr-1">
+      home
+    </i>
+    Ir al inicio
+    </a>
+	</div>
+</section>

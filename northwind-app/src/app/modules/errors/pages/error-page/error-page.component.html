@@ -1,0 +1,18 @@
+<section class="flex items-center sm:p-16">
+	<div class="container flex flex-col items-center justify-center px-5 mx-auto my-8 space-y-8 text-center sm:max-w-md">
+		<i class="material-icons-outlined text-9xl text-red-600">report_problem</i>
+    <p class="text-2xl">
+      Se produjo un error al procesar la solicitud. Por favor, inténtelo de nuevo más tarde.
+    </p>
+		<a 
+      [routerLink]="'/'"
+      class="flex items-center justify-center px-3 py-1.5 text-white bg-green-700 rounded-md hover:bg-green-500 transition duration-300 cursor-pointer"
+      title="Ir al inicio" 
+    >
+    <i class="material-icons-outlined text-md mr-1">
+      home
+    </i>
+    Ir al inicio
+    </a>
+	</div>
+</section>

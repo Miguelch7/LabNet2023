@@ -10,6 +10,14 @@ const routes: Routes = [
   {
     path: 'categories',
     loadChildren: () => import('./modules/categories/categories-routing.module').then(m => m.CategoriesRoutingModule)
+  },
+  {
+    path: 'error',
+    loadChildren: () => import('./modules/errors/errors-routing.module').then(m => m.ErrorsRoutingModule)
+  },
+  {
+    path: '**',
+    redirectTo: '/error/not-found'
   }
 ];
 
