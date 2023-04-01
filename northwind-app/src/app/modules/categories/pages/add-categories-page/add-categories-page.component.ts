@@ -29,6 +29,13 @@ export class AddCategoriesPageComponent implements OnInit {
       });
       
       this.router.navigate(['/categories']);
+    }, error => {
+      Swal.fire({
+        title: '¡Error!',
+        text: 'No se pudo crear la categoría, inténtelo más tarde.',
+        icon: 'error',
+        confirmButtonColor: '#22c55e'
+      });
     });
   }
 }

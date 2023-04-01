@@ -35,6 +35,12 @@ export class UpdateCategoriesPageComponent implements OnInit {
 
       this.categoriesService.getById(id).subscribe((categoryResponse: Category) => {
         this.formCategories.setValue(categoryResponse);
+      }, error => {
+        if (error.status == 404) {
+          this.router.navigate(['/error/not-found']);
+        } else {
+          this.router.navigate(['/error']);
+        }
       });
     };
   }
@@ -49,6 +55,13 @@ export class UpdateCategoriesPageComponent implements OnInit {
       });
       
       this.router.navigate(['/categories']);
+    }, error => {
+      Swal.fire({
+        title: '¡Error!',
+        text: 'No se pudo actualizar la categoría, inténtelo más tarde.',
+        icon: 'error',
+        confirmButtonColor: '#22c55e'
+      });
     });
   }
 }

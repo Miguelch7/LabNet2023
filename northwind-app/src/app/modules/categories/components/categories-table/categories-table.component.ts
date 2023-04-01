@@ -43,6 +43,13 @@ export class CategoriesTableComponent implements OnInit {
           });
 
           this.categoriesList = this.categoriesList.filter(c => c.id != id);
+        }, error => {
+          Swal.fire({
+            title: '¡Error!',
+            text: 'No se pudo eliminar la categoría, inténtelo más tarde.',
+            icon: 'error',
+            confirmButtonColor: '#22c55e'
+          });
         });
       }
     })
