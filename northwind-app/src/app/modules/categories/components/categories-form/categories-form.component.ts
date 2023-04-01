@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { Category } from '../../models/Category';
 
 @Component({
@@ -9,45 +10,46 @@ import { Category } from '../../models/Category';
 })
 export class CategoriesFormComponent implements OnInit {
 
-  formCategories!: FormGroup;
+  @Input() formCategories: FormGroup = this.formBuilder.group({
+    id: null,
+    categoryName: [
+      '', 
+      [Validators.required, Validators.minLength(3)]
+    ],
+    description: ['']
+  });
 
-  @Input() category: Category = {
-    categoryName: '',
-    description: ''
-  };
   @Output() sendCategory = new EventEmitter<Category>();
 
   constructor(
     private formBuilder: FormBuilder
   ) { }
 
-  ngOnInit(): void {
-    this.formCategories = this.formBuilder.group({
-      categoryName: [
-        this.category.categoryName, 
-        [Validators.required, Validators.minLength(3)]
-      ],
-      description: [
-        this.category.description
-      ]
-    })
-  }
+  ngOnInit(): void { }
 
   onSubmit(): void {
-    this.category = { 
+    const category: Category = {
       categoryName: this.categoryName?.value, 
-      description: this.description?.value, 
+      description: this.description?.value
     };
 
-    this.sendCategory.emit(this.category);
+    if (this.categoryId?.value) category.id = this.categoryId?.value;
+
+    this.sendCategory.emit(category);
+
     this.onReset();
   }
 
   onReset(): void {
-    this.formCategories = this.formBuilder.group({
-      categoryName: ['', [Validators.required, Validators.minLength(3)]],
-      description: ['']
+    this.formCategories.setValue({
+      id: this.categoryId?.value,
+      categoryName: '',
+      description: ''
     });
+  }
+
+  get categoryId() {
+    return this.formCategories.get('id');
   }
 
   get categoryName() {
@@ -57,5 +59,4 @@ export class CategoriesFormComponent implements OnInit {
   get description() {
     return this.formCategories.get('description');
   }
-
 }

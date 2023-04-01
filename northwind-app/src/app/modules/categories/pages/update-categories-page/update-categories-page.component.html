@@ -12,8 +12,8 @@
   </a>
   
   <app-categories-form
-    [category]="category" 
-    (sendCategory)="UpdateCategory($event)"
+    [formCategories]="formCategories"
+    (sendCategory)="updateCategory($event)"
   ></app-categories-form>
   
 </section>

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 import { Category } from '../models/Category';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +26,10 @@ export class CategoriesService {
 
   add(category: Category): Observable<Category> {
     return this.http.post<Category>(this.url, category);
+  }
+
+  update(category: Category): Observable<Category> {
+    return this.http.put<Category>(`${this.url}/${category.id}`, category);
   }
 
   delete(id: number): Observable<string> {

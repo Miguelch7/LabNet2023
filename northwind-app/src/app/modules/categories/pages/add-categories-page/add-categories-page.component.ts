@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 import { Category } from '../../models/Category';
 import { CategoriesService } from '../../services/categories.service';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-categories-page',
@@ -17,17 +17,9 @@ export class AddCategoriesPageComponent implements OnInit {
     private categoriesService: CategoriesService
   ) { }
 
-  category: Category = {
-    categoryName: '',
-    description: ''
-  };
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   addCategory(category: Category): void {
-    this.category = category;
-    
     this.categoriesService.add(category).subscribe(res => {
       Swal.fire({
         title: '¡Éxito!',
