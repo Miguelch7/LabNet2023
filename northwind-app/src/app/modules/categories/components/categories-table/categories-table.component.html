@@ -7,6 +7,9 @@
     </tr>
   </thead>
   <tbody>
+    <tr *ngIf="categoriesList.length === 0">
+      <td colspan="3">No hay categorías para mostrar.</td>
+    </tr>
     <tr *ngFor="let category of categoriesList" class="bg-gray-200 text-left">
       <td class="p-3 text-gray-700 font-bold uppercase">
         {{ category.categoryName }}
