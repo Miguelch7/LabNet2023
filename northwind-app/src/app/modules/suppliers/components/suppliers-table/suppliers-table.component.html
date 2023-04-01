@@ -1,0 +1,39 @@
+<table class="table text-gray-600 border-separate space-y-6 text-sm">
+  <thead class="bg-gray-900 text-white">
+    <tr>
+      <th class="p-3 text-left">Compañia</th>
+      <th class="p-3 text-left">Contacto</th>
+      <th class="p-3">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngIf="suppliersList.length === 0">
+      <td colspan="5">No hay proveedores para mostrar.</td>
+    </tr>
+    <tr *ngFor="let supplier of suppliersList" class="bg-gray-200 text-left">
+      <td class="p-3 text-gray-700 font-bold uppercase">
+        {{ supplier.companyName }}
+      </td>
+      <td class="p-3">
+        <p class="font-semibold">{{ supplier.contactName }}</p>
+        <p class="italic">{{ supplier.contactTitle }}</p>
+      </td>
+      <td class="p-3">
+        <a 
+          [routerLink]="['/suppliers/update/', supplier.id]" 
+          class="text-gray-400 hover:text-yellow-500 mx-1 md:mx-2"
+          title="Editar categoría"
+        >
+          <i class="material-icons">edit</i>
+        </a>
+        <button 
+          (click)="onDelete(supplier.id!)" 
+          class="text-gray-400 hover:text-red-500 mx-1 md:mx-2"
+          title="Eliminar categoría"
+        >
+          <i class="material-icons">delete</i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

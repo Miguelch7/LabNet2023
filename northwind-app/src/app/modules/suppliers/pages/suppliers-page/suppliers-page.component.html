@@ -1,0 +1,20 @@
+<h1 class="font-extrabold text-3xl my-2">Proveedores</h1>
+
+<div class="flex items-center justify-center">
+  <div class="col-span-12">
+    <div class="overflow-auto lg:overflow-visible">
+      <div class="flex justify-end">
+        <a 
+          class="flex items-center justify-center px-3 py-1.5 text-white bg-green-700 rounded-md hover:bg-green-500 transition duration-300 cursor-pointer"
+          [routerLink]="'/suppliers/add'"
+        >
+          <i class="material-icons-outlined mr-1">
+            add
+          </i>
+          Añadir proveedor
+        </a>
+      </div>
+      <app-suppliers-table></app-suppliers-table>
+    </div>
+  </div>
+</div>
