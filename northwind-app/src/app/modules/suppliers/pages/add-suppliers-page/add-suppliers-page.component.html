@@ -1,0 +1,9 @@
+<h1 class="font-extrabold text-3xl my-2">Añadir proveedor</h1>
+
+<section class="mx-auto flex justify-center items-center w-4/5 md:w-3/5 xl:w-2/5 flex-wrap">
+  <app-suppliers-form
+    [btnText]="'Añadir'"
+    [btnIcon]="'add'"
+    (sendSupplier)="addSupplier($event)"
+  ></app-suppliers-form>
+</section>
