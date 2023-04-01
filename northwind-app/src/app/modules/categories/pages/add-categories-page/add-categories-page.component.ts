@@ -20,22 +20,25 @@ export class AddCategoriesPageComponent implements OnInit {
   ngOnInit(): void { }
 
   addCategory(category: Category): void {
-    this.categoriesService.add(category).subscribe(res => {
-      Swal.fire({
-        title: '¡Éxito!',
-        text: 'La categoría se ha creado correctamente',
-        icon: 'success',
-        confirmButtonColor: '#22c55e'
-      });
-      
-      this.router.navigate(['/categories']);
-    }, error => {
-      Swal.fire({
-        title: '¡Error!',
-        text: 'No se pudo crear la categoría, inténtelo más tarde.',
-        icon: 'error',
-        confirmButtonColor: '#22c55e'
-      });
+    this.categoriesService.add(category).subscribe({
+      next: () => {
+        Swal.fire({
+          title: '¡Éxito!',
+          text: 'La categoría se ha creado correctamente',
+          icon: 'success',
+          confirmButtonColor: '#22c55e'
+        });
+        
+        this.router.navigate(['/categories']);
+      }, 
+      error: () => {
+        Swal.fire({
+          title: '¡Error!',
+          text: 'No se pudo crear la categoría, inténtelo más tarde.',
+          icon: 'error',
+          confirmButtonColor: '#22c55e'
+        });
+      }
     });
   }
 }

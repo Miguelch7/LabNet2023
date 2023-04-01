@@ -32,28 +32,30 @@ export class CategoriesTableComponent implements OnInit {
       cancelButtonColor: '#dc2626',
       confirmButtonText: 'Si, eliminar!',
       cancelButtonText: 'Cancelar'
-    }).then((result) => {
+    })
+    .then((result) => {
       if (result.isConfirmed) {
-        this.categoriesService.delete(id).subscribe(res => {
-          Swal.fire({
-            title: '¡Eliminado!',
-            text: 'La categoría se ha eliminado correctamente',
-            icon: 'success',
-            confirmButtonColor: '#22c55e'
-          });
+        this.categoriesService.delete(id).subscribe({
+          next: () => {
+            Swal.fire({
+              title: '¡Eliminado!',
+              text: 'La categoría se ha eliminado correctamente',
+              icon: 'success',
+              confirmButtonColor: '#22c55e'
+            });
 
-          this.categoriesList = this.categoriesList.filter(c => c.id != id);
-        }, error => {
-          Swal.fire({
-            title: '¡Error!',
-            text: 'No se pudo eliminar la categoría, inténtelo más tarde.',
-            icon: 'error',
-            confirmButtonColor: '#22c55e'
-          });
+            this.categoriesList = this.categoriesList.filter(c => c.id != id);
+          }, 
+          error: () => {
+            Swal.fire({
+              title: '¡Error!',
+              text: 'No se pudo eliminar la categoría, inténtelo más tarde.',
+              icon: 'error',
+              confirmButtonColor: '#22c55e'
+            });
+          }
         });
       }
-    })
-    
+    })    
   }
-
 }

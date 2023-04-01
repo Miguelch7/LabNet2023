@@ -33,36 +33,39 @@ export class UpdateCategoriesPageComponent implements OnInit {
     if (parseInt(this.route.snapshot.paramMap.get('id')!)) {
       const id: number = parseInt(this.route.snapshot.paramMap.get('id')!);
 
-      this.categoriesService.getById(id).subscribe((categoryResponse: Category) => {
-        this.formCategories.setValue(categoryResponse);
-      }, error => {
-        console.log(error);
-        if (error.status == 404) {
-          this.router.navigate(['/error/not-found']);
-        } else {
-          this.router.navigate(['/error']);
+      this.categoriesService.getById(id).subscribe({
+        next: (categoryResponse: Category) => {
+          this.formCategories.setValue(categoryResponse);
+        }, 
+        error: error => {
+          (error.status == 404) 
+            ? this.router.navigate(['/error/not-found']) 
+            : this.router.navigate(['/error']);
         }
       });
     };
   }
 
   updateCategory(category: Category): void {
-    this.categoriesService.update(category).subscribe(res => {
-      Swal.fire({
-        title: '¡Éxito!',
-        text: 'La categoría se ha actualizado correctamente',
-        icon: 'success',
-        confirmButtonColor: '#22c55e'
-      });
-      
-      this.router.navigate(['/categories']);
-    }, error => {
-      Swal.fire({
-        title: '¡Error!',
-        text: 'No se pudo actualizar la categoría, inténtelo más tarde.',
-        icon: 'error',
-        confirmButtonColor: '#22c55e'
-      });
+    this.categoriesService.update(category).subscribe({
+      next: () => {
+        Swal.fire({
+          title: '¡Éxito!',
+          text: 'La categoría se ha actualizado correctamente',
+          icon: 'success',
+          confirmButtonColor: '#22c55e'
+        });
+        
+        this.router.navigate(['/categories']);
+      },
+      error: () => {
+        Swal.fire({
+          title: '¡Error!',
+          text: 'No se pudo actualizar la categoría, inténtelo más tarde.',
+          icon: 'error',
+          confirmButtonColor: '#22c55e'
+        });
+      }
     });
   }
 }
