@@ -30,20 +30,23 @@ export class UpdateCategoriesPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (parseInt(this.route.snapshot.paramMap.get('id')!)) {
-      const id: number = parseInt(this.route.snapshot.paramMap.get('id')!);
+    if (!parseInt(this.route.snapshot.paramMap.get('id')!)) {
+      this.router.navigate(['/error/not-found']);
+      return;
+    }
 
-      this.categoriesService.getById(id).subscribe({
-        next: (categoryResponse: Category) => {
-          this.formCategories.setValue(categoryResponse);
-        }, 
-        error: error => {
-          (error.status == 404) 
-            ? this.router.navigate(['/error/not-found']) 
-            : this.router.navigate(['/error']);
-        }
-      });
-    };
+    const id: number = parseInt(this.route.snapshot.paramMap.get('id')!);
+
+    this.categoriesService.getById(id).subscribe({
+      next: (categoryResponse: Category) => {
+        this.formCategories.setValue(categoryResponse);
+      }, 
+      error: error => {
+        (error.status == 404) 
+          ? this.router.navigate(['/error/not-found']) 
+          : this.router.navigate(['/error']);
+      }
+    });
   }
 
   updateCategory(category: Category): void {

@@ -37,20 +37,23 @@ export class UpdateSuppliersPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (parseInt(this.route.snapshot.paramMap.get('id')!)) {
-      const id: number = parseInt(this.route.snapshot.paramMap.get('id')!);
+    if (!parseInt(this.route.snapshot.paramMap.get('id')!)) {
+      this.router.navigate(['/error/not-found']);
+      return;
+    }
+    
+    const id: number = parseInt(this.route.snapshot.paramMap.get('id')!);
 
-      this.suppliersService.getById(id).subscribe({
-        next: (supplierResponse: Supplier) => {
-          this.formSuppliers.setValue(supplierResponse);
-        },
-        error: error => {
-          (error.status == 404)
-            ? this.router.navigate(['/error/not-found'])
-            : this.router.navigate(['/error']);
-        }
-      });
-    };
+    this.suppliersService.getById(id).subscribe({
+      next: (supplierResponse: Supplier) => {
+        this.formSuppliers.setValue(supplierResponse);
+      },
+      error: error => {
+        (error.status == 404)
+          ? this.router.navigate(['/error/not-found'])
+          : this.router.navigate(['/error']);
+      }
+    });
   }
 
   updateSupplier(supplier: Supplier): void {
