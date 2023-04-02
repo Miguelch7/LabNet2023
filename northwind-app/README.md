@@ -1,5 +1,12 @@
 # NorthwindApp
 
+Este proyecto de Angular consume una WebApi desarrollada en .NET Framework 4.7.2 que utiliza la base de datos de Northwind. En este momento, solo se incluyen las secciones de Categories y Suppliers, pero el proyecto está diseñado de tal manera que se puede escalar para incluir más tablas de la base de datos de Northwind.
+
+Tecnologías utilizadas
+  - Angular 14.2.11
+  - TailwindCSS 3.3.0
+  - Sweet Alert 11.7.3
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.11.
 
 ## Development server
