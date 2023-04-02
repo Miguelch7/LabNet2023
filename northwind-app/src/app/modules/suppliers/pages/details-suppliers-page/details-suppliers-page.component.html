@@ -1,0 +1,51 @@
+<section class="w-9/10 md:w-3/5 xl:w-2/5 mx-auto">
+  
+  <div
+  class="flex justify-center flex-wrap rounded-xl border border-gray-100 p-4 shadow-xl sm:p-6 lg:p-8"
+  >
+    <h1 class="font-extrabold text-2xl w-full my-2">{{ supplier.companyName }}</h1>
+    <div class="py-4 text-gray-500 font-bold">
+      <p class="py-1">Nombre del contacto: <span class="font-normal">{{ supplier.contactName }}</span></p>
+      <p class="py-1">Título del Contacto: <span class="font-normal">{{ supplier.contactTitle }}</span></p>
+      <p class="py-1">Dirección: <span class="font-normal">{{ supplier.address }}</span></p>
+      <p class="py-1">Ciudad: <span class="font-normal">{{ supplier.city }}</span></p>
+      <p class="py-1">País: <span class="font-normal">{{ supplier.country }}</span></p>
+    </div>
+    
+
+    <div class="flex items-center justify-around w-2/3 pt-2">
+      <a 
+        [routerLink]="['/suppliers/update/', supplier.id]"
+        class="flex items-center font-bold px-3 md:px-5 py-1.5 md:py-2.5 font-mediun text-gray-700 bg-gray-200 rounded-md hover:bg-yellow-200 hover:text-yellow-700 transition duration-300 cursor-pointer"
+        type="submit" 
+        value="Save"
+      >
+        <i class="material-icons-outlined text-base mr-1">
+          edit
+        </i>
+        Editar
+      </a>
+
+      <button 
+      (click)="onDelete(supplier.id!)"
+        class="flex items-center font-bold px-3 md:px-5 py-1.5 md:py-2.5 font-mediun text-gray-700 bg-gray-200 rounded-md hover:bg-red-200 hover:text-red-700 transition duration-300 cursor-pointer"
+      >
+        <i class="material-icons-outlined text-base mr-1">
+          delete_outline
+        </i>
+        Eliminar
+      </button>
+    </div>
+    <div class="w-full mt-3">
+      <a 
+        [routerLink]="['/suppliers']"  
+        class="flex items-center -mx-1 text-sm text-green-500 capitalize transition-colors duration-300 transform hover:text-green-700"
+      >
+        <i class="material-icons-outlined">
+          arrow_back
+        </i>
+        <span class="mx-1 font-bold">Volver atrás</span>
+      </a>
+    </div>
+  </div>
+</section>
