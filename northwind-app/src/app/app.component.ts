@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Section } from './core/models/Section';
+import sections from 'src/app/data/sections';
 
 @Component({
   selector: 'app-root',
@@ -13,20 +14,7 @@ export class AppComponent {
   constructor() { }
 
   ngOnInit(): void {
-    this.sectionsList = [
-      {
-        name: 'Categorías',
-        text: 'Cree, liste, edite y elimine todas las categorías de Northwind.',
-        icon: 'category',
-        router: ['/', 'categories']
-      },
-      {
-        name: 'Proveedores',
-        text: 'Cree, liste, edite y elimine todos los proveedores de Northwind.',
-        icon: 'groups',
-        router: ['/', 'suppliers']
-      }
-    ]
+    this.sectionsList = sections;
   }
   
 }
